@@ -1,21 +1,37 @@
 import { action, observable } from 'mobx';
-import { Note } from 'models';
+import { AsyncStatus, Note } from 'models';
 import { v1 } from 'uuid';
 
 export class NotesStore {
 
   @observable.shallow public notes: Note[] = [];
+  @observable public addNoteStatus: AsyncStatus = AsyncStatus.Init;
+  @observable public removeNoteStatus: AsyncStatus = AsyncStatus.Init;
 
-  @action
-  public addNote(message: string): void {
-    this.notes.push({
-      id: v1(),
-      message,
-    });
+  @action.bound
+  public async addNote(message: string): Promise<void> {
+    this.addNoteStatus = AsyncStatus.Pending;
+
+    try {
+      this.notes.push({
+        id: v1(),
+        message,
+      });
+      this.addNoteStatus = AsyncStatus.Pending;
+    } catch {
+      this.addNoteStatus = AsyncStatus.Error;
+    }
   }
 
-  @action
-  public removeNote(uuid: string): void {
-    this.notes = this.notes.filter(note => note.id !== uuid);
+  @action.bound
+  public async removeNote(uuid: string): Promise<void> {
+    this.removeNoteStatus = AsyncStatus.Pending;
+
+    try {
+      this.notes = this.notes.filter(note => note.id !== uuid);
+      this.removeNoteStatus = AsyncStatus.Success;
+    } catch {
+      this.removeNoteStatus = AsyncStatus.Error;
+    }
   }
 }

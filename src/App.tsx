@@ -8,9 +8,9 @@ import { NotesStore } from './stores/notes.store';
 
 class App extends React.Component {
 
-  public notesStore = new NotesStore();
+  public notesStore: NotesStore = new NotesStore();
 
-  public render() {
+  public render(): JSX.Element {
     return (
       <div className="App">
         <header className="App-header">

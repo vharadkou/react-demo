@@ -1,9 +1,7 @@
 import * as React from 'react';
 
-import { observer } from 'mobx-react';
 import { Props } from './Note.types';
 
-@observer
 export class Note extends React.Component<Props> {
 
   public removeNote = () => {
