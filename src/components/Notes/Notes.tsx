@@ -1,8 +1,9 @@
+import { observer } from 'mobx-react';
 import React from 'react';
 
-import { observer } from 'mobx-react';
-import { Form } from '../Form';
-import { Note } from '../Note';
+import { Form } from 'components/Form';
+import { Note } from 'components/Note';
+
 import { Props } from './Notes.types';
 
 @observer

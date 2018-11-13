@@ -1,37 +1,60 @@
-import { action, observable } from 'mobx';
+import { action, configure, observable, runInAction } from 'mobx';
 import { AsyncStatus, Note } from 'models';
-import { v1 } from 'uuid';
+
+import { addNote, removeNote } from 'services/notes.repository';
+
+configure({ enforceActions: 'always' });
 
 export class NotesStore {
 
-  @observable.shallow public notes: Note[] = [];
-  @observable public addNoteStatus: AsyncStatus = AsyncStatus.Init;
-  @observable public removeNoteStatus: AsyncStatus = AsyncStatus.Init;
+  @observable.shallow public notes: Note[];
+  @observable public addNoteStatus: AsyncStatus;
+  @observable public removeNoteStatus: AsyncStatus;
+
+  public constructor() {
+    this.init();
+  }
+
+  @action
+  public init = () => {
+    this.notes = [];
+    this.addNoteStatus = AsyncStatus.Init;
+    this.removeNoteStatus = AsyncStatus.Init;
+  }
 
   @action
   public addNote = async (message: string) => {
     this.addNoteStatus = AsyncStatus.Pending;
 
     try {
-      this.notes.push({
-        id: v1(),
-        message,
+      const note = await addNote(message);
+
+      runInAction(() => {
+        this.notes.push(note);
+        this.addNoteStatus = AsyncStatus.Pending;
       });
-      this.addNoteStatus = AsyncStatus.Pending;
     } catch {
-      this.addNoteStatus = AsyncStatus.Error;
+      runInAction(() => {
+        this.addNoteStatus = AsyncStatus.Error;
+      });
     }
   }
 
   @action
-  public removeNote = (uuid: string) => {
+  public removeNote = async (uuid: string) => {
     this.removeNoteStatus = AsyncStatus.Pending;
 
     try {
-      this.notes = this.notes.filter(note => note.id !== uuid);
-      this.removeNoteStatus = AsyncStatus.Success;
+      await removeNote(uuid);
+
+      runInAction(() => {
+        this.notes = this.notes.filter(note => note.id !== uuid);
+        this.removeNoteStatus = AsyncStatus.Success;
+      });
     } catch {
-      this.removeNoteStatus = AsyncStatus.Error;
+      runInAction(() => {
+        this.removeNoteStatus = AsyncStatus.Error;
+      });
     }
   }
 }
