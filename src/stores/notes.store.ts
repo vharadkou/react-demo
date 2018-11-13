@@ -8,8 +8,8 @@ export class NotesStore {
   @observable public addNoteStatus: AsyncStatus = AsyncStatus.Init;
   @observable public removeNoteStatus: AsyncStatus = AsyncStatus.Init;
 
-  @action.bound
-  public async addNote(message: string): Promise<void> {
+  @action
+  public addNote = async (message: string) => {
     this.addNoteStatus = AsyncStatus.Pending;
 
     try {
@@ -23,8 +23,8 @@ export class NotesStore {
     }
   }
 
-  @action.bound
-  public async removeNote(uuid: string): Promise<void> {
+  @action
+  public removeNote = (uuid: string) => {
     this.removeNoteStatus = AsyncStatus.Pending;
 
     try {

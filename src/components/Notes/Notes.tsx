@@ -7,11 +7,6 @@ import { Props } from './Notes.types';
 
 @observer
 export class Notes extends React.Component<Props> {
-
-  public updateDraftNoteMessage = (e: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ draftNoteMessage: e.target.value });
-  }
-
   public render(): JSX.Element {
     const { notesStore: { notes, addNote, removeNote } } = this.props;
 
