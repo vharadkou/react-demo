@@ -1,5 +1,8 @@
 import React from 'react';
 
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
 import { Props } from './Note.types';
 
 export class Note extends React.Component<Props> {
@@ -13,8 +16,8 @@ export class Note extends React.Component<Props> {
 
     return (
       <div>
-        <span>{note.message}</span>
-        <button onClick={this.removeNote}>-</button>
+        <Typography variant="subtitle1">{note.message}</Typography>
+        <Button onClick={this.removeNote}>-</Button>
       </div>
     )
   }
