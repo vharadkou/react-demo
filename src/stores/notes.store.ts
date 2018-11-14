@@ -3,7 +3,7 @@ import { AsyncStatus, Note } from 'models';
 
 import { addNote, removeNote } from 'services/notes.repository';
 
-configure({ enforceActions: 'always' });
+configure({ enforceActions: 'never' });
 
 export class NotesStore {
 
@@ -41,14 +41,14 @@ export class NotesStore {
   }
 
   @action
-  public removeNote = async (uuid: string) => {
+  public removeNote = async (id: string) => {
     this.removeNoteStatus = AsyncStatus.Pending;
 
     try {
-      await removeNote(uuid);
+      await removeNote(id);
 
       runInAction(() => {
-        this.notes = this.notes.filter(note => note.id !== uuid);
+        this.notes = this.notes.filter(note => note.id !== id);
         this.removeNoteStatus = AsyncStatus.Success;
       });
     } catch {

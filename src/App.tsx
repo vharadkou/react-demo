@@ -3,7 +3,7 @@ import './App.css';
 
 import logo from './logo.svg';
 
-import { Notes } from './components/Notes';
+import { Home } from './scenes/Home';
 import { NotesStore } from './stores/notes.store';
 
 class App extends React.Component {
@@ -20,7 +20,7 @@ class App extends React.Component {
         <p className="App-intro">
           To get started, edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <Notes notesStore={this.notesStore} />
+        <Home notesStore={this.notesStore} />
       </div>
     );
   }

@@ -1,9 +1,9 @@
 import { Note } from 'models';
-import { v1 } from 'uuid';
+import { v4 } from 'uuid';
 
 export function addNote(message: string): Promise<Note> {
   return new Promise(resolve => resolve({
-    id: v1(),
+    id: v4(),
     message,
   }));
 };
