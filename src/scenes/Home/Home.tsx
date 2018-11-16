@@ -2,20 +2,17 @@ import { observer } from 'mobx-react';
 import React from 'react';
 
 import { Form } from 'components/Form';
-import { NoteList } from 'components/NoteList';
+import { Note } from 'components/Note';
 
 import { Props } from './Home.types';
 
-@observer
-export class Home extends React.Component<Props> {
-  public render(): JSX.Element {
-    const { notesStore } = this.props;
-
-    return (
-      <div>
-        <Form onSubmit={notesStore.addNote} />
-        <NoteList notesStore={notesStore} />
-      </div>
-    )
-  }
-}
+export const Home = observer(({ notesStore: { notes, addNote, removeNote } }: Props) => {
+  return (
+    <div>
+      <Form onSubmit={addNote} />
+      {notes.map(note => (
+        <Note key={note.id} note={note} onRemove={removeNote} />
+      ))}
+    </div>
+  )
+})

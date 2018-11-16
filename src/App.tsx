@@ -6,24 +6,19 @@ import logo from './logo.svg';
 import { Home } from './scenes/Home';
 import { NotesStore } from './stores/notes.store';
 
-class App extends React.Component {
+const notesStore = new NotesStore();
 
-  public notesStore: NotesStore = new NotesStore();
-
-  public render(): JSX.Element {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
+export const App = () => {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <h1 className="App-title">Welcome to React</h1>
+      </header>
+      <p className="App-intro">
+        To get started, edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <Home notesStore={this.notesStore} />
-      </div>
-    );
-  }
+      <Home notesStore={notesStore} />
+    </div>
+  );
 }
-
-export default App;
