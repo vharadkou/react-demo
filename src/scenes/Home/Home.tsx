@@ -1,12 +1,13 @@
-import { observer } from 'mobx-react';
-import React from 'react';
+import { observer } from 'mobx-react-lite';
+import React, { useContext } from 'react';
+import { StoreContext } from 'store-context';
 
 import { Form } from 'components/Form';
 import { Note } from 'components/Note';
 
-import { Props } from './Home.types';
+export const Home = observer(() => {
+  const { notesStore: { notes, addNote, removeNote } } = useContext(StoreContext);
 
-export const Home = observer(({ notesStore: { notes, addNote, removeNote } }: Props) => {
   return (
     <div>
       <Form onSubmit={addNote} />
@@ -15,4 +16,4 @@ export const Home = observer(({ notesStore: { notes, addNote, removeNote } }: Pr
       ))}
     </div>
   )
-})
+});
