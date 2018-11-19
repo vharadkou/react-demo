@@ -1,4 +1,4 @@
 export interface Props {
-  text?: string;
+  value?: string;
   onSubmit: (text: string) => void;
 }

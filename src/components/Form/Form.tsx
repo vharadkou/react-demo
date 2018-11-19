@@ -5,8 +5,8 @@ import Input from '@material-ui/core/Input';
 
 import { Props } from './Form.types';
 
-export const Form = ({ onSubmit }: Props) => {
-  const [draftText, onUpdate] = useState('');
+export const Form = ({ value, onSubmit }: Props) => {
+  const [draftText, onUpdate] = useState(value || '');
 
   const submit = () => {
     onSubmit(draftText);
