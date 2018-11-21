@@ -1,7 +1,7 @@
 import { action, configure, observable, runInAction } from 'mobx';
 import { AsyncStatus, Note } from 'models';
 
-import { addNote, removeNote } from 'services/notes.repository';
+import { addNote, removeNote, updateNote } from 'services/notes.repository';
 
 configure({ enforceActions: 'never' });
 
@@ -10,6 +10,7 @@ export class NotesStore {
   @observable.shallow public notes: Note[];
   @observable public addNoteStatus: AsyncStatus;
   @observable public removeNoteStatus: AsyncStatus;
+  @observable public updateNoteStatus: AsyncStatus;
 
   public constructor() {
     this.init();
@@ -36,6 +37,24 @@ export class NotesStore {
     } catch {
       runInAction(() => {
         this.addNoteStatus = AsyncStatus.Error;
+      });
+    }
+  }
+
+  @action
+  public updateNote = async (id: string, message: string) => {
+    this.updateNoteStatus = AsyncStatus.Pending;
+
+    try {
+      await updateNote(id, message);
+
+      runInAction(() => {
+        this.notes = this.notes.map(note => note.id === id ? ({ id, message, }) : note);
+        this.updateNoteStatus = AsyncStatus.Success;
+      });
+    } catch {
+      runInAction(() => {
+        this.updateNoteStatus = AsyncStatus.Error;
       });
     }
   }

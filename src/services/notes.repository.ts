@@ -11,3 +11,7 @@ export function addNote(message: string): Promise<Note> {
 export function removeNote(id: string): Promise<void> {
   return new Promise(resolve => resolve());
 }
+
+export function updateNote(id: string, message: string): Promise<void> {
+  return new Promise(resolve => resolve());
+}

@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 
-import { Props } from './Form.types';
+import { Props } from './NewNoteForm.types';
 
-export const Form = ({ value, onSubmit }: Props) => {
-  const [draftText, onUpdate] = useState(value || '');
+export const NewNoteForm = memo(({ onSubmit }: Props) => {
+  const [draftText, onUpdate] = useState('');
 
   const submit = () => {
     onSubmit(draftText);
+    onUpdate('');
   }
 
   const updateDraftText = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,8 +19,8 @@ export const Form = ({ value, onSubmit }: Props) => {
 
   return (
     <>
-      <Input value={draftText} onChange={updateDraftText} placeholder="new note" />
+      <Input value={draftText} onChange={updateDraftText} placeholder="Note message" />
       <Button onClick={submit}>Add Note</Button>
     </>
   )
-}
+})
