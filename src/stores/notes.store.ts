@@ -17,14 +17,14 @@ export class NotesStore {
   }
 
   @action
-  public init = () => {
+  public readonly init = () => {
     this.notes = [];
     this.addNoteStatus = AsyncStatus.Init;
     this.removeNoteStatus = AsyncStatus.Init;
   }
 
   @action
-  public addNote = async (message: string) => {
+  public readonly addNote = async (message: string) => {
     this.addNoteStatus = AsyncStatus.Pending;
 
     try {
@@ -42,7 +42,7 @@ export class NotesStore {
   }
 
   @action
-  public updateNote = async (id: string, message: string) => {
+  public readonly updateNote = async (id: string, message: string) => {
     this.updateNoteStatus = AsyncStatus.Pending;
 
     try {
@@ -60,7 +60,7 @@ export class NotesStore {
   }
 
   @action
-  public removeNote = async (id: string) => {
+  public readonly removeNote = async (id: string) => {
     this.removeNoteStatus = AsyncStatus.Pending;
 
     try {
