@@ -1,1 +1,1 @@
-export * from './notes.store';
+export * from './stores';

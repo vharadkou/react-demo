@@ -1,7 +1,7 @@
 import { action, configure, observable, runInAction } from 'mobx';
 import { AsyncStatus, Note } from 'models';
 
-import { addNote, removeNote, updateNote } from 'services/notes.repository';
+import { api } from 'services';
 
 configure({ enforceActions: 'never' });
 
@@ -28,7 +28,7 @@ export class NotesStore {
     this.addNoteStatus = AsyncStatus.Pending;
 
     try {
-      const note = await addNote(message);
+      const note = await api.notes.addNote(message);
 
       runInAction(() => {
         this.notes.push(note);
@@ -46,7 +46,7 @@ export class NotesStore {
     this.updateNoteStatus = AsyncStatus.Pending;
 
     try {
-      await updateNote(id, message);
+      await api.notes.updateNote(id, message);
 
       runInAction(() => {
         this.notes = this.notes.map(note => note.id === id ? ({ id, message, }) : note);
@@ -64,7 +64,7 @@ export class NotesStore {
     this.removeNoteStatus = AsyncStatus.Pending;
 
     try {
-      await removeNote(id);
+      await api.notes.removeNote(id);
 
       runInAction(() => {
         this.notes = this.notes.filter(note => note.id !== id);

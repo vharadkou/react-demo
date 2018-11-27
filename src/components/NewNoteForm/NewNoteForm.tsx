@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
@@ -8,14 +8,14 @@ import { Props } from './NewNoteForm.types';
 export const NewNoteForm = memo(({ onSubmit }: Props) => {
   const [draftText, onUpdate] = useState('');
 
-  const submit = () => {
+  const submit = useCallback(() => {
     onSubmit(draftText);
     onUpdate('');
-  }
+  }, [draftText])
 
-  const updateDraftText = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const updateDraftText = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     onUpdate(e.target.value);
-  }
+  }, [])
 
   return (
     <>

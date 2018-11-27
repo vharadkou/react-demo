@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
@@ -8,17 +8,17 @@ import { Props } from './EditNoteForm.types';
 export const EditNoteForm = ({ value, onSubmit, onCancel }: Props) => {
   const [draftText, onUpdate] = useState(value);
 
-  const submit = () => {
+  const submit = useCallback(() => {
     onSubmit(draftText);
-  }
+  }, [draftText])
 
-  const cancel = () => {
+  const cancel = useCallback(() => {
     onCancel();
-  }
+  }, []);
 
-  const updateDraftText = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const updateDraftText = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     onUpdate(e.target.value);
-  }
+  }, [])
 
   return (
     <>

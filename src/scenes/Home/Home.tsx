@@ -1,12 +1,12 @@
 import { observer } from 'mobx-react-lite';
-import React, { useContext } from 'react';
-import { StoreContext } from 'store-context';
+import React from 'react';
 
 import { NewNoteForm } from 'components/NewNoteForm';
 import { Note } from 'components/Note';
+import { useStore } from 'stores';
 
 export const Home = observer(() => {
-  const { notesStore: { notes, addNote, updateNote, removeNote } } = useContext(StoreContext);
+  const { notesStore: { notes, addNote, updateNote, removeNote } } = useStore();
 
   return (
     <div>
