@@ -2,13 +2,18 @@ import React, { memo, useCallback, useState } from 'react';
 
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/styles';
 
 import { EditNoteForm } from 'components/EditNoteForm';
 
+import { styles } from './Note.styles';
 import { Props } from './Note.types';
+
+const useStyles = makeStyles(styles);
 
 export const Note = memo(({ note, onRemove, onUpdate }: Props) => {
   const [isEditMode, updateEditMode] = useState(false);
+  const classes = useStyles({});
 
   const handleRemoveNote = useCallback(() => {
     onRemove(note.id);
@@ -28,7 +33,7 @@ export const Note = memo(({ note, onRemove, onUpdate }: Props) => {
   }, [note])
 
   return (
-    <div>
+    <div className={classes.root}>
       {isEditMode ? (
         <EditNoteForm value={note.message} onSubmit={handleUpdateNote} onCancel={turnOffEditMode} />
       ) : (
