@@ -40,4 +40,4 @@ export const Note = memo(({ note, onRemove, onUpdate }: Props) => {
         )}
     </div>
   )
-}, (prevProps: Props, nextProps: Props) => prevProps.note === nextProps.note);
+});
