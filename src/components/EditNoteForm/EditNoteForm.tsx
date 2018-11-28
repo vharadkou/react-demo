@@ -6,19 +6,19 @@ import Input from '@material-ui/core/Input';
 import { Props } from './EditNoteForm.types';
 
 export const EditNoteForm = ({ value, onSubmit, onCancel }: Props) => {
-  const [draftText, onUpdate] = useState(value);
+  const [draftText, setDraftText] = useState(value);
 
   const submit = useCallback(() => {
     onSubmit(draftText);
-  }, [draftText])
+  }, [draftText, onSubmit])
 
   const cancel = useCallback(() => {
     onCancel();
-  }, []);
+  }, [onCancel]);
 
   const updateDraftText = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    onUpdate(e.target.value);
-  }, [])
+    setDraftText(e.target.value);
+  }, [setDraftText])
 
   return (
     <>

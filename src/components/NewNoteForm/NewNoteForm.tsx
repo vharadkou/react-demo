@@ -6,16 +6,16 @@ import Input from '@material-ui/core/Input';
 import { Props } from './NewNoteForm.types';
 
 export const NewNoteForm = memo(({ onSubmit }: Props) => {
-  const [draftText, onUpdate] = useState('');
+  const [draftText, setDraftText] = useState('');
 
   const submit = useCallback(() => {
     onSubmit(draftText);
-    onUpdate('');
-  }, [draftText])
+    setDraftText('');
+  }, [draftText, setDraftText])
 
   const updateDraftText = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    onUpdate(e.target.value);
-  }, [])
+    setDraftText(e.target.value);
+  }, [setDraftText])
 
   return (
     <>

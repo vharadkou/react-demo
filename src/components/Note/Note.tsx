@@ -12,25 +12,25 @@ import { Props } from './Note.types';
 const useStyles = makeStyles(styles);
 
 export const Note = memo(({ note, onRemove, onUpdate }: Props) => {
-  const [isEditMode, updateEditMode] = useState(false);
+  const [isEditMode, setEditMode] = useState(false);
   const classes = useStyles({});
 
   const handleRemoveNote = useCallback(() => {
     onRemove(note.id);
-  }, [note]);
+  }, [note, onRemove]);
 
   const turnOnEditMode = useCallback(() => {
-    updateEditMode(true);
+    setEditMode(true);
   }, [])
 
   const turnOffEditMode = useCallback(() => {
-    updateEditMode(false);
+    setEditMode(false);
   }, [])
 
   const handleUpdateNote = useCallback((message: string) => {
     turnOffEditMode();
     onUpdate(note.id, message);
-  }, [note])
+  }, [note, onUpdate])
 
   return (
     <div className={classes.root}>
