@@ -21,6 +21,11 @@
       "parameter",
       "property-declaration",
       "member-variable-declaration"
+    ],
+    "semicolon": [
+      true,
+      "always",
+      "ignore-bound-class-methods"
     ]
   }
 }

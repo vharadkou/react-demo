@@ -21,16 +21,16 @@ export const Note = memo(({ note, onRemove, onUpdate }: Props) => {
 
   const turnOnEditMode = useCallback(() => {
     setEditMode(true);
-  }, [])
+  }, []);
 
   const turnOffEditMode = useCallback(() => {
     setEditMode(false);
-  }, [])
+  }, []);
 
   const handleUpdateNote = useCallback((message: string) => {
     turnOffEditMode();
     onUpdate(note.id, message);
-  }, [note, onUpdate])
+  }, [note, onUpdate]);
 
   return (
     <div className={classes.root}>
@@ -44,5 +44,5 @@ export const Note = memo(({ note, onRemove, onUpdate }: Props) => {
           </>
         )}
     </div>
-  )
+  );
 });

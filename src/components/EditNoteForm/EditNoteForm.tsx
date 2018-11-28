@@ -10,7 +10,7 @@ export const EditNoteForm = ({ value, onSubmit, onCancel }: Props) => {
 
   const submit = useCallback(() => {
     onSubmit(draftText);
-  }, [draftText, onSubmit])
+  }, [draftText, onSubmit]);
 
   const cancel = useCallback(() => {
     onCancel();
@@ -18,7 +18,7 @@ export const EditNoteForm = ({ value, onSubmit, onCancel }: Props) => {
 
   const updateDraftText = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setDraftText(e.target.value);
-  }, [setDraftText])
+  }, [setDraftText]);
 
   return (
     <>
@@ -26,5 +26,5 @@ export const EditNoteForm = ({ value, onSubmit, onCancel }: Props) => {
       <Button onClick={submit}>Save Note</Button>
       <Button onClick={cancel}>Cancel</Button>
     </>
-  )
-}
+  );
+};

@@ -15,5 +15,5 @@ export const Home = observer(() => {
         <Note key={note.id} note={note} onUpdate={updateNote} onRemove={removeNote} />
       ))}
     </div>
-  )
+  );
 });
