@@ -26,6 +26,7 @@
       true,
       "always",
       "ignore-bound-class-methods"
-    ]
+    ],
+    "object-literal-sort-keys": false
   }
 }
