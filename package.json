@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^3.7.0",
+    "@material-ui/core": "^3.7.1",
     "@material-ui/styles": "^3.0.0-alpha.4",
     "mobx": "^5.8.0",
     "mobx-react-lite": "^0.3.4",
-    "react": "^16.7.0-alpha.2",
-    "react-dom": "^16.7.0-alpha.2",
+    "react": "16.7.0-alpha.2",
+    "react-dom": "16.7.0-alpha.2",
     "react-scripts-ts": "4.0.8",
     "uuid": "^3.3.2"
   },
@@ -20,8 +20,8 @@
   },
   "devDependencies": {
     "@types/jest": "^23.3.10",
-    "@types/node": "^10.12.15",
-    "@types/react": "^16.7.17",
+    "@types/node": "^10.12.18",
+    "@types/react": "^16.7.18",
     "@types/react-dom": "^16.0.11",
     "@types/uuid": "^3.4.4",
     "typescript": "^3.2.2"

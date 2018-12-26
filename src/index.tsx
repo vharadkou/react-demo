@@ -8,7 +8,11 @@ import { App } from './App';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
-const theme = createMuiTheme();
+const theme = createMuiTheme({
+  typography: {
+    useNextVariants: true,
+  },
+});
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
