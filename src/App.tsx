@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/styles';
+
 import './App.css';
 
-import { Home } from './scenes/Home';
+const HomeAsync = lazy(() => import('./scenes/Home'));
 
 import { styles } from './App.styles';
 import logo from './logo.svg';
@@ -22,7 +24,9 @@ export const App = () => {
       <p className={classes.intro}>
         To get started, edit <code>src/App.tsx</code> and save to reload.
       </p>
-      <Home />
+      <Suspense fallback={<CircularProgress />}>
+        <HomeAsync />
+      </Suspense>
     </div>
   );
 };

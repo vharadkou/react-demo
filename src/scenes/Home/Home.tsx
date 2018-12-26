@@ -5,7 +5,7 @@ import { NewNoteForm } from 'components/NewNoteForm';
 import { Note } from 'components/Note';
 import { useStore } from 'stores';
 
-export const Home = observer(() => {
+export default observer(() => {
   const { notesStore: { notes, addNote, updateNote, removeNote } } = useStore();
 
   return (
