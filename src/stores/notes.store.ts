@@ -32,13 +32,18 @@ export class NotesStore {
 
       runInAction(() => {
         this.notes.push(note);
-        this.addNoteStatus = AsyncStatus.Pending;
+        this.addNoteStatus = AsyncStatus.Success;
       });
     } catch {
       runInAction(() => {
         this.addNoteStatus = AsyncStatus.Error;
       });
     }
+  }
+
+  @action
+  public readonly resetAddNoteStatus = () => {
+    this.addNoteStatus = AsyncStatus.Init;
   }
 
   @action

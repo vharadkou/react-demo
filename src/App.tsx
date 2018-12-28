@@ -2,17 +2,20 @@ import React, { lazy, Suspense } from 'react';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/styles';
+import { useSnackbar } from 'hooks';
+import { withSnackbar } from 'notistack';
 
 import './App.css';
 
-const HomeAsync = lazy(() => import('./scenes/Home'));
+const HomeAsync = lazy(() => import('scenes/Home'));
 
 import { styles } from './App.styles';
 import logo from './logo.svg';
 
 const useStyles = makeStyles(styles);
 
-export const App = () => {
+export const App = withSnackbar(({ enqueueSnackbar }) => {
+  useSnackbar(enqueueSnackbar);
   const classes = useStyles({});
 
   return (
@@ -29,4 +32,4 @@ export const App = () => {
       </Suspense>
     </div>
   );
-};
+});
