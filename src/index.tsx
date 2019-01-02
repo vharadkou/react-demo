@@ -5,6 +5,8 @@ import { createMuiTheme } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 import { SnackbarProvider } from 'notistack';
 
+import './bootstrap';
+
 import { App } from './App';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
