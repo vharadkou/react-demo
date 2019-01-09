@@ -16,7 +16,7 @@ const useStyles = makeStyles(styles);
 
 export const App = withSnackbar(({ enqueueSnackbar }) => {
   useSnackbar(enqueueSnackbar);
-  const classes = useStyles({});
+  const classes = useStyles();
 
   return (
     <div className={classes.root}>

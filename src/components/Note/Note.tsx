@@ -13,7 +13,7 @@ const useStyles = makeStyles(styles);
 
 export const Note = memo(({ note, onRemove, onUpdate }: Props) => {
   const [isEditMode, setEditMode] = useState(false);
-  const classes = useStyles({});
+  const classes = useStyles();
 
   const handleRemoveNote = useCallback(() => {
     onRemove(note.id);
