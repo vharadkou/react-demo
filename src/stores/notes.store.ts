@@ -11,6 +11,7 @@ export class NotesStore {
   @observable public addNoteStatus: AsyncStatus;
   @observable public removeNoteStatus: AsyncStatus;
   @observable public updateNoteStatus: AsyncStatus;
+  @observable public latestAddedNote?: Note;
 
   public constructor() {
     this.init();
@@ -32,6 +33,7 @@ export class NotesStore {
 
       runInAction(() => {
         this.notes.push(note);
+        this.latestAddedNote = note;
         this.addNoteStatus = AsyncStatus.Success;
       });
     } catch {
