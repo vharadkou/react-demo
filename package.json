@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^3.8.3",
-    "@material-ui/styles": "^3.0.0-alpha.7",
+    "@material-ui/core": "^3.9.0",
+    "@material-ui/styles": "^3.0.0-alpha.8",
     "mobx": "^5.8.0",
     "mobx-react-lite": "^0.3.5",
     "notistack": "^0.4.1",
