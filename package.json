@@ -8,8 +8,8 @@
     "mobx": "^5.8.0",
     "mobx-react-lite": "^0.3.5",
     "notistack": "^0.4.1",
-    "react": "16.8.0-alpha.0",
-    "react-dom": "16.8.0-alpha.0",
+    "react": "16.8.0-alpha.1",
+    "react-dom": "16.8.0-alpha.1",
     "react-scripts-ts": "4.0.8",
     "uuid": "^3.3.2"
   },
@@ -20,12 +20,12 @@
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.12",
+    "@types/jest": "^23.3.13",
     "@types/node": "^10.12.18",
-    "@types/react": "^16.7.18",
+    "@types/react": "^16.7.20",
     "@types/react-dom": "^16.0.11",
     "@types/uuid": "^3.4.4",
-    "typescript": "^3.2.2"
+    "typescript": "^3.2.4"
   },
   "browserslist": [
     ">0.2%",
