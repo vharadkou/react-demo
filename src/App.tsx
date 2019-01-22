@@ -2,8 +2,8 @@ import React, { lazy, Suspense } from 'react';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/styles';
-import { useSnackbar } from 'hooks';
 import { withSnackbar } from 'notistack';
+import { useSnackbar } from 'hooks';
 
 import './App.css';
 

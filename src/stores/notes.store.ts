@@ -1,16 +1,16 @@
 import { action, configure, observable, runInAction } from 'mobx';
-import { AsyncStatus, Note } from 'models';
 
+import { AsyncStatus, Note } from 'models';
 import { api } from 'services';
 
 configure({ enforceActions: 'never' });
 
 export class NotesStore {
 
-  @observable.shallow public notes: Note[];
-  @observable public addNoteStatus: AsyncStatus;
-  @observable public removeNoteStatus: AsyncStatus;
-  @observable public updateNoteStatus: AsyncStatus;
+  @observable.shallow public notes!: Note[];
+  @observable public addNoteStatus!: AsyncStatus;
+  @observable public removeNoteStatus!: AsyncStatus;
+  @observable public updateNoteStatus!: AsyncStatus;
   @observable public latestAddedNote?: Note;
 
   public constructor() {
@@ -22,6 +22,7 @@ export class NotesStore {
     this.notes = [];
     this.addNoteStatus = AsyncStatus.Init;
     this.removeNoteStatus = AsyncStatus.Init;
+    this.updateNoteStatus = AsyncStatus.Init;
   }
 
   @action
