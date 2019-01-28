@@ -3,17 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^3.9.0",
-    "@material-ui/styles": "^3.0.0-alpha.8",
+    "@material-ui/core": "^3.9.1",
+    "@material-ui/styles": "^3.0.0-alpha.9",
     "mobx": "^5.9.0",
-    "mobx-react-lite": "^0.3.5",
+    "mobx-react-lite": "^0.3.6",
     "notistack": "^0.4.1",
     "react": "16.8.0-alpha.1",
     "react-dom": "16.8.0-alpha.1",
     "uuid": "^3.3.2"
   },
   "scripts": {
-    "watch": "react-scripts start",
+    "watch": "export NODE_PATH=./src&&react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -21,7 +21,7 @@
   "devDependencies": {
     "@types/jest": "^23.3.13",
     "@types/node": "^10.12.18",
-    "@types/react": "^16.7.20",
+    "@types/react": "^16.7.21",
     "@types/react-dom": "^16.0.11",
     "@types/uuid": "^3.4.4",
     "react-scripts": "^2.1.3",
