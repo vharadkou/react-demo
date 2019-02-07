@@ -1,5 +1,5 @@
-import { v4 } from 'uuid';
 import { Note } from 'models';
+import { v4 } from 'uuid';
 
 export const notes = Object.freeze({
   async addNote(message: string): Promise<Note> {
