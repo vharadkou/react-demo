@@ -1,12 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-
 import { createMuiTheme } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/styles';
 import { SnackbarProvider } from 'notistack';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 import './bootstrap';
 
+// tslint:disable-next-line: ordered-imports
 import { App } from './App';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';

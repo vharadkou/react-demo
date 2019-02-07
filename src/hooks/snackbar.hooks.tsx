@@ -1,11 +1,9 @@
-import React from 'react';
-
 import Button from '@material-ui/core/Button';
-
 import { reaction } from 'mobx';
 import { useDisposable } from 'mobx-react-lite';
 import { AsyncStatus } from 'models';
 import { OptionsObject } from 'notistack';
+import React from 'react';
 import { useStore } from 'stores';
 
 const DEFAULT_DURATION = 5000;

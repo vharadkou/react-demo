@@ -1,5 +1,4 @@
 import { action, configure, observable, runInAction } from 'mobx';
-
 import { AsyncStatus, Note } from 'models';
 import { api } from 'services';
 

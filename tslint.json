@@ -22,6 +22,15 @@
       "property-declaration",
       "member-variable-declaration"
     ],
+    "ordered-imports": [
+      true,
+      {
+        "grouped-imports": true,
+        "import-sources-order": "lowercase-last",
+        "named-imports-order": "lowercase-last",
+        "module-source-path": "full"
+      }
+    ],
     "semicolon": [
       true,
       "always",

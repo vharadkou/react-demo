@@ -1,10 +1,8 @@
-import React, { memo, useCallback, useState } from 'react';
-
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/styles';
-
 import { EditNoteForm } from 'components/EditNoteForm';
+import React, { memo, useCallback, useState } from 'react';
 
 import { styles } from './Note.styles';
 import { Props } from './Note.types';

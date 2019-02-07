@@ -1,16 +1,14 @@
-import React, { lazy, Suspense } from 'react';
-
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/styles';
 import { useSnackbar } from 'hooks';
 import { withSnackbar } from 'notistack';
+import React, { Suspense, lazy } from 'react';
 
 import './App.css';
-
-const HomeAsync = lazy(() => import('scenes/Home'));
-
 import { styles } from './App.styles';
 import logo from './logo.svg';
+
+const HomeAsync = lazy(() => import('scenes/Home'));
 
 const useStyles = makeStyles(styles);
 
