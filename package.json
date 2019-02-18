@@ -22,7 +22,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
-      "pre-push": "lint-staged"
+      "commit-msg": "npx commitlint -e %HUSKY_GIT_PARAMS%"
     }
   },
   "lint-staged": {
@@ -31,6 +31,8 @@
     ]
   },
   "devDependencies": {
+    "@commitlint/cli": "^7.5.2",
+    "@commitlint/config-conventional": "^7.5.0",
     "@types/jest": "^24.0.6",
     "@types/node": "^11.9.4",
     "@types/react": "^16.8.3",
