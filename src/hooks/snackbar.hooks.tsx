@@ -9,30 +9,48 @@ import { useStore } from 'stores';
 const DEFAULT_DURATION = 5000;
 
 // tslint:disable:jsx-no-lambda
-export function useSnackbar(enqueueSnackbar: (message: string, options?: OptionsObject) => void): void {
+export function useSnackbar(
+  enqueueSnackbar: (message: string, options?: OptionsObject) => void
+): void {
   const { notesStore } = useStore();
 
-  useDisposable(() => reaction(() => ({
-    status: notesStore.addNoteStatus,
-    latestNote: notesStore.latestAddedNote
-  }), ({ status, latestNote }) => {
-    if (status === AsyncStatus.Success) {
-      enqueueSnackbar(`Success add note ${latestNote && latestNote.message}`, {
-        variant: 'success',
-        autoHideDuration: DEFAULT_DURATION,
-        action: <Button onClick={() => latestNote && notesStore.removeNote(latestNote.id)}>Undo</Button>,
-      });
+  useDisposable(() =>
+    reaction(
+      () => ({
+        status: notesStore.addNoteStatus,
+        latestNote: notesStore.latestAddedNote,
+      }),
+      ({ status, latestNote }) => {
+        if (status === AsyncStatus.Success) {
+          enqueueSnackbar(
+            `Success add note ${latestNote && latestNote.message}`,
+            {
+              variant: 'success',
+              autoHideDuration: DEFAULT_DURATION,
+              action: (
+                <Button
+                  onClick={() =>
+                    latestNote && notesStore.removeNote(latestNote.id)
+                  }
+                >
+                  Undo
+                </Button>
+              ),
+            }
+          );
 
-      notesStore.resetAddNoteStatus();
-    }
+          notesStore.resetAddNoteStatus();
+        }
 
-    if (status === AsyncStatus.Error) {
-      enqueueSnackbar('Error add note', {
-        variant: 'error',
-        autoHideDuration: DEFAULT_DURATION
-      });
+        if (status === AsyncStatus.Error) {
+          enqueueSnackbar('Error add note', {
+            variant: 'error',
+            autoHideDuration: DEFAULT_DURATION,
+          });
 
-      notesStore.resetAddNoteStatus();
-    }
-  }));
+          notesStore.resetAddNoteStatus();
+        }
+      }
+    )
+  );
 }

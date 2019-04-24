@@ -12,13 +12,20 @@ export const NewNoteForm = memo(({ onSubmit }: Props) => {
     setDraftText('');
   }, [draftText, setDraftText]);
 
-  const updateDraftText = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setDraftText(e.target.value);
-  }, [setDraftText]);
+  const updateDraftText = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setDraftText(e.target.value);
+    },
+    [setDraftText]
+  );
 
   return (
     <>
-      <Input value={draftText} onChange={updateDraftText} placeholder="Note message" />
+      <Input
+        value={draftText}
+        onChange={updateDraftText}
+        placeholder="Note message"
+      />
       <Button onClick={submit}>Add Note</Button>
     </>
   );

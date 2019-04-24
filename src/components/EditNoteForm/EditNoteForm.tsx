@@ -15,13 +15,20 @@ export const EditNoteForm = ({ value, onSubmit, onCancel }: Props) => {
     onCancel();
   }, [onCancel]);
 
-  const updateDraftText = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setDraftText(e.target.value);
-  }, [setDraftText]);
+  const updateDraftText = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setDraftText(e.target.value);
+    },
+    [setDraftText]
+  );
 
   return (
     <>
-      <Input value={draftText} onChange={updateDraftText} placeholder="Note message" />
+      <Input
+        value={draftText}
+        onChange={updateDraftText}
+        placeholder="Note message"
+      />
       <Button onClick={submit}>Save Note</Button>
       <Button onClick={cancel}>Cancel</Button>
     </>

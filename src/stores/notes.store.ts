@@ -5,7 +5,6 @@ import { api } from 'services';
 configure({ enforceActions: 'never' });
 
 export class NotesStore {
-
   @observable.shallow public notes!: Note[];
   @observable public addNoteStatus!: AsyncStatus;
   @observable public removeNoteStatus!: AsyncStatus;
@@ -22,7 +21,7 @@ export class NotesStore {
     this.addNoteStatus = AsyncStatus.Init;
     this.removeNoteStatus = AsyncStatus.Init;
     this.updateNoteStatus = AsyncStatus.Init;
-  }
+  };
 
   @action
   public readonly addNote = async (message: string) => {
@@ -41,12 +40,12 @@ export class NotesStore {
         this.addNoteStatus = AsyncStatus.Error;
       });
     }
-  }
+  };
 
   @action
   public readonly resetAddNoteStatus = () => {
     this.addNoteStatus = AsyncStatus.Init;
-  }
+  };
 
   @action
   public readonly updateNote = async (id: string, message: string) => {
@@ -56,7 +55,9 @@ export class NotesStore {
       await api.notes.updateNote(id, message);
 
       runInAction(() => {
-        this.notes = this.notes.map(note => note.id === id ? ({ id, message, }) : note);
+        this.notes = this.notes.map(note =>
+          note.id === id ? { id, message } : note
+        );
         this.updateNoteStatus = AsyncStatus.Success;
       });
     } catch {
@@ -64,7 +65,7 @@ export class NotesStore {
         this.updateNoteStatus = AsyncStatus.Error;
       });
     }
-  }
+  };
 
   @action
   public readonly removeNote = async (id: string) => {
@@ -82,5 +83,5 @@ export class NotesStore {
         this.removeNoteStatus = AsyncStatus.Error;
       });
     }
-  }
+  };
 }

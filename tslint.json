@@ -2,19 +2,15 @@
   "extends": [
     "tslint:recommended",
     "tslint-react",
-    "tslint-config-prettier"
+    "tslint-config-prettier",
+    "tslint-plugin-prettier"
   ],
   "linterOptions": {
-    "exclude": [
-      "config/**/*.js",
-      "node_modules/**/*.ts"
-    ]
+    "exclude": ["config/**/*.js", "node_modules/**/*.ts"]
   },
   "rules": {
-    "interface-name": [
-      true,
-      "never-prefix"
-    ],
+    "prettier": true,
+    "interface-name": [true, "never-prefix"],
     "typedef": [
       true,
       "call-signature",
@@ -31,11 +27,7 @@
         "module-source-path": "full"
       }
     ],
-    "semicolon": [
-      true,
-      "always",
-      "ignore-bound-class-methods"
-    ],
+    "semicolon": [true, "always", "ignore-bound-class-methods"],
     "object-literal-sort-keys": false
   }
 }

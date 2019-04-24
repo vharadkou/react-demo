@@ -25,22 +25,29 @@ export const Note = memo(({ note, onRemove, onUpdate }: Props) => {
     setEditMode(false);
   }, []);
 
-  const handleUpdateNote = useCallback((message: string) => {
-    turnOffEditMode();
-    onUpdate(note.id, message);
-  }, [note, onUpdate]);
+  const handleUpdateNote = useCallback(
+    (message: string) => {
+      turnOffEditMode();
+      onUpdate(note.id, message);
+    },
+    [note, onUpdate]
+  );
 
   return (
     <div className={classes.root}>
       {isEditMode ? (
-        <EditNoteForm value={note.message} onSubmit={handleUpdateNote} onCancel={turnOffEditMode} />
+        <EditNoteForm
+          value={note.message}
+          onSubmit={handleUpdateNote}
+          onCancel={turnOffEditMode}
+        />
       ) : (
-          <>
-            <Typography variant="subtitle1">{note.message}</Typography>
-            <Button onClick={turnOnEditMode}>Edit</Button>
-            <Button onClick={handleRemoveNote}>-</Button>
-          </>
-        )}
+        <>
+          <Typography variant="subtitle1">{note.message}</Typography>
+          <Button onClick={turnOnEditMode}>Edit</Button>
+          <Button onClick={handleRemoveNote}>-</Button>
+        </>
+      )}
     </div>
   );
 });
