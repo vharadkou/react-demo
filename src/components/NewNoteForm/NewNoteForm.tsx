@@ -10,7 +10,7 @@ export const NewNoteForm = memo(({ onSubmit }: Props) => {
   const submit = useCallback(() => {
     onSubmit(draftText);
     setDraftText('');
-  }, [draftText, setDraftText]);
+  }, [draftText, setDraftText, onSubmit]);
 
   const updateDraftText = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {

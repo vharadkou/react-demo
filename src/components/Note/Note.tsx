@@ -30,7 +30,7 @@ export const Note = memo(({ note, onRemove, onUpdate }: Props) => {
       turnOffEditMode();
       onUpdate(note.id, message);
     },
-    [note, onUpdate]
+    [note, onUpdate, turnOffEditMode]
   );
 
   return (
