@@ -13,8 +13,10 @@
     "uuid": "^3.3.2"
   },
   "scripts": {
-    "start": "npm run lint-ts && export NODE_PATH=./src && react-scripts start",
-    "build": "npm run lint-ts && export NODE_PATH=./src && react-scripts build",
+    "prestart": "npm run lint-ts",
+    "prebuild": "npm run lint-ts",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint-ts": "tslint -c tslint.json 'src/**/*.{ts,tsx}' --fix --format verbose"
